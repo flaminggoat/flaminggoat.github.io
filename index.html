@@ -37,7 +37,11 @@
           var chart = new google.visualization.LineChart($('#chart').get(0));
 
           chart.draw(data, {
-            title: 'Neptune New Office'
+            title: 'Neptune New Office',
+            series: {
+              0: {targetAxisIndex:0},
+              1:{targetAxisIndex:1}
+            }
           });
 
         });
