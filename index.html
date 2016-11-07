@@ -11,7 +11,7 @@
       // onload callback
       function drawChart() {
 
-        var public_key = 'dZ4EVmE8yGCRGx5XRX1W';
+        var public_key = 'OGJv6v0WaEi732Z9AYOq';
 
         // JSONP request
         var jsonData = $.ajax({
@@ -24,20 +24,20 @@
 
           data.addColumn('datetime', 'Time');
           data.addColumn('number', 'Temp');
-          data.addColumn('number', 'Wind Speed MPH');
+          data.addColumn('number', 'Humidity');
 
           $.each(results, function (i, row) {
             data.addRow([
               (new Date(row.timestamp)),
-              parseFloat(row.tempf),
-              parseFloat(row.windspeedmph)
+              parseFloat(row.temperature),
+              parseFloat(row.humidity)
             ]);
           });
 
           var chart = new google.visualization.LineChart($('#chart').get(0));
 
           chart.draw(data, {
-            title: 'Wimp Weather Station'
+            title: 'Neptune New Office'
           });
 
         });
