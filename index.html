@@ -9,9 +9,9 @@
     <script>
 
       // onload callback
-      function drawChart() {
+      function drawChart(id, title, key) {
 
-        var public_key = 'OGJv6v0WaEi732Z9AYOq';
+        var public_key = key;
 
         // JSONP request
         var jsonData = $.ajax({
@@ -34,10 +34,10 @@
             ]);
           });
 
-          var chart = new google.visualization.LineChart($('#chart').get(0));
+          var chart = new google.visualization.LineChart($('#' + id).get(0));
 
           chart.draw(data, {
-            title: 'Neptune New Office',
+            title: title,
             series: {
               0: {targetAxisIndex:0},
               1:{targetAxisIndex:1}
@@ -54,12 +54,16 @@
       });
 
       // call drawChart once google charts is loaded
-      google.setOnLoadCallback(drawChart);
+      google.setOnLoadCallback(function() {
+		drawChart('neptune_new_office', 'Neptune New Office', 'OGJv6v0WaEi732Z9AYOq');
+		drawChart('theo_living_rooom', 'Theo Living Room', 'OGJv6v0WaEi732Z9AYOq');
+	  });
 
     </script>
 
   </head>
   <body>
-    <div id="chart" style="width: 100%; height: 500px;"></div>
+    <div id="neptune_new_office" style="width: 100%; height: 500px;"></div>
+	<div id="theo_living_rooom" style="width: 100%; height: 500px;"></div>
   </body>
 </html>
